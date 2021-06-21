@@ -16,10 +16,11 @@ use Goutte\Client;
 class ScrapJob implements ShouldQueue
 {
     const SPOTIFY_DETAILS = "https://www.spotifyjobs.com/jobs/";
+    const EXPERIENCED = 1;
 
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $scrapData;
+    public array $scrapData = [];
 
     /**
      * Create a new job instance.
@@ -64,7 +65,7 @@ class ScrapJob implements ShouldQueue
             $vacancyModel->job_id = $this->scrapData['id'];
             $vacancyModel->title = $this->scrapData['text'];
             if (is_array($experience[0]) && !empty($experience[0])){
-                $vacancyModel->experience = 1;
+                $vacancyModel->experience = self::EXPERIENCED;
                 $vacancyModel->years = $experience[0][0];
             }
             if (!empty($description[0]))
