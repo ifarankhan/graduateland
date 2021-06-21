@@ -20,7 +20,7 @@ class ScrapJob implements ShouldQueue
 
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public array $scrapData = [];
+    public $scrapData = [];
 
     /**
      * Create a new job instance.
