@@ -2,11 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\Scraper\ScraperController;
 use App\Models\Vacancy;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;

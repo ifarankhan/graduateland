@@ -6,7 +6,6 @@ namespace App\Http\Services;
 
 use App\Jobs\ScrapJob;
 use GuzzleHttp\Client;
-use Illuminate\Http\Request;
 
 class ScraperService
 {
