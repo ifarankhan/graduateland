@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Scraper;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\ScrapperService;
+use App\Http\Services\ScraperService;
 use Illuminate\Http\Request;
 
 class ScraperController extends Controller
 {
-    /** @var ScrapperService */
-    private $scrapperService;
+    /** @var ScraperService */
+    private $scraperService;
 
     public function __construct()
     {
-        $this->scrapperService = new ScrapperService($this);
+        $this->scraperService = new ScraperService($this);
     }
 
     /**
@@ -36,7 +36,7 @@ class ScraperController extends Controller
     {
         $country = $request->get("country");
         if (!empty($country)){
-            $response = $this->scrapperService->scraper($country);
+            $response = $this->scraperService->scraper($country);
             if ($response){
                 \Session::flash('message', "We started scraping the data related to $country. Your data will be available shortly!");
                 \Session::flash('alert-class', 'alert-success');

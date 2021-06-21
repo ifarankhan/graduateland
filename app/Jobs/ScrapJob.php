@@ -71,8 +71,11 @@ class ScrapJob implements ShouldQueue
             if (!empty($description[0]))
                 $vacancyModel->descriptions =$description[0];
 
-            if ($vacancyModel->save())
-                return true;
+            if ($vacancyModel->save()){
+                Log::info('Inserted to database. ', ['id' => $this->scrapData['id']]);
+                return;
+            }
+
             else
                 Log::error('Failed to save data in database for ', ['id' => $this->scrapData['id']]);
         }

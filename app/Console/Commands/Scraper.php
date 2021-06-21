@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Services\ScrapperService;
+use App\Http\Services\ScraperService;
 use Illuminate\Console\Command;
 
 class Scraper extends Command
@@ -21,8 +21,8 @@ class Scraper extends Command
      */
     protected $description = 'Scrape data from spotifyjobs.com with passing country as an argument.';
 
-    /** @var ScrapperService */
-    private $scrapperService;
+    /** @var ScraperService */
+    private $scraperService;
 
     /**
      * Create a new command instance.
@@ -31,7 +31,7 @@ class Scraper extends Command
      */
     public function __construct()
     {
-        $this->scrapperService = new ScrapperService($this);
+        $this->scraperService = new ScraperService($this);
         parent::__construct();
     }
 
@@ -43,7 +43,7 @@ class Scraper extends Command
     public function handle()
     {
         $country = $this->argument('country');
-        $response = $this->scrapperService->scraper($country);
+        $response = $this->scraperService->scraper($country);
         if ($response){
             $this->info("We started scraping the data related to $country. Your data will be available shortly!");
         }else{
