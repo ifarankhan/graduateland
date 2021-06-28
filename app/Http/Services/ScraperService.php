@@ -6,6 +6,7 @@ namespace App\Http\Services;
 
 use App\Jobs\ScrapJob;
 use GuzzleHttp\Client;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class ScraperService
 {
@@ -15,7 +16,7 @@ class ScraperService
      * Get the data from spotify.
      *
      * @param string $country
-     * @return \Illuminate\View\View
+     * @return bool
      */
     public function scraper(string $country)
     {
